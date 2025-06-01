@@ -141,7 +141,9 @@ namespace SD7501BulkyWeb.Areas.Admin.Controllers
 
             //It is a regular customer account and we need to capture payment
             //Stripe logic
-            var domain = "https://localhost:7051/";
+            //var domain = "https://localhost:7051/";
+            var domain = Request.Scheme + "://" + Request.Host.Value + "/";
+                
             var options = new SessionCreateOptions
             {
                 SuccessUrl = domain + $"admin/order/PaymentConfirmation?orderHeaderid={OrderVM.OrderHeader.Id}",
